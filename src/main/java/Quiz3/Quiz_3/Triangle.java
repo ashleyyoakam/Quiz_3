@@ -1,5 +1,6 @@
 package Quiz3.Quiz_3;
 
+import Exceptions.TriangleException;
 
 public class Triangle extends GeometricObject{
 	private double side1;
@@ -15,10 +16,15 @@ public class Triangle extends GeometricObject{
 }
 	
 	//constructor with specific values
-	Triangle(double sideone,double sidetwo,double sidethree){
+	Triangle(double sideone,double sidetwo,double sidethree) throws TriangleException{
+		if(((side1+side2+side3)/2)*(((side1+side2+side3)/2)-side1)*(((side1+side2+side3)/2)-side2)*(((side1+side2+side3)/2)-side3)<=0){
+			throw new TriangleException("Triangle is imaginary");
+		}
+		else{
 		side1=sideone;
 		side2=sidetwo;
 		side3=sidethree;
+		}
 	}
 	
 	//Accessors
